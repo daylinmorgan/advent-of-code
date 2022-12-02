@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -39,11 +40,23 @@ func main() {
 	check(err)
 
 	// split into groups based on blank new line
+	var calories = []int{}
 	for _, arr := range strings.Split(string(dat), "\n\n") {
 		sum := sum(arr_str_to_int(strings.Fields(arr)))
+		calories = append(calories, sum)
 		if sum > maxCal {
 			maxCal = sum
 		}
 	}
 	fmt.Printf("max calories are %d\n", maxCal)
+
+	// sort.Ints(calories)
+	// copy pasted .... https://stackoverflow.com/a/18343326
+	// sort.IntSlice does what?
+	sort.Sort(sort.Reverse(sort.IntSlice(calories)))
+	total := 0
+	for i := 0; i < 3; i++ {
+		total = total + calories[i]
+	}
+	fmt.Println("total of top 3 elves ->", total)
 }

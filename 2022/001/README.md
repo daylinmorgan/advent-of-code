@@ -48,4 +48,8 @@ All of this could probably be crudely accomplished with a single for loop.
 
 If I was using python I could imagine several list comprehensions with max/sum
 
+## Part Two
 
+Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+
+Will need to generate a slice off all the calorie totals then sort it by value.
