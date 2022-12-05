@@ -13,11 +13,12 @@ func check(e error) {
 	}
 }
 
+func splitFn(c rune) bool {
+	return c == '\n'
+}
+
 func readFileLines(filename string) []string {
 
-	splitFn := func(c rune) bool {
-		return c == '\n'
-	}
 	dat, err := os.ReadFile(filename)
 	check(err)
 	return strings.FieldsFunc(string(dat), splitFn)
