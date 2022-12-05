@@ -38,28 +38,21 @@ func expandAssignment(assignment string) []int {
 	return sections
 }
 
-func getStartFinish(assignment string) map[string]int {
-	ends := strings.Split(assignment, "-")
-	start, err := strconv.Atoi(ends[0])
-	check(err)
-	finish, err := strconv.Atoi(ends[1])
-	check(err)
-	return map[string]int{"start": start, "finish": finish}
-}
-
 // func compareAssignments(assignments []map[string]int) bool {
 func compareAssignments(assignments [][]int) bool {
 	var allSections []int
 	var maxSize int
+	var totalSize int
 	for _, assignment := range assignments {
 		if len(assignment) >= maxSize {
-			maxSize = len(assignment)
+			// maxSize = len(assignment)
+			totalSize += len(assignment)
 		}
 		allSections = append(allSections, assignment...)
 	}
 	allSections = dedupe(allSections)
 
-	return len(allSections) == maxSize
+	return len(allSections) != totalSize
 }
 
 // copy paste :/
