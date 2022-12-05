@@ -67,13 +67,23 @@ func parseMoves(movesDef string) []map[string]int {
 	return moves
 }
 
+// // part 1 move func
+// func moveCrates(move map[string]int, cargo map[int][]string) map[int][]string {
+// 	startStack, endStack, numCrates := move["start"], move["end"], move["num"]
+// 	for i := 0; i < numCrates; i++ {
+// 		sizeStartStack := len(cargo[startStack])
+// 		cargo[endStack] = append(cargo[endStack], cargo[startStack][sizeStartStack-1])
+// 		cargo[startStack] = cargo[startStack][:sizeStartStack-1]
+// 	}
+// 	return cargo
+// }
+
+// part 2 move func
 func moveCrates(move map[string]int, cargo map[int][]string) map[int][]string {
 	startStack, endStack, numCrates := move["start"], move["end"], move["num"]
-	for i := 0; i < numCrates; i++ {
-		sizeStartStack := len(cargo[startStack])
-		cargo[endStack] = append(cargo[endStack], cargo[startStack][sizeStartStack-1])
-		cargo[startStack] = cargo[startStack][:sizeStartStack-1]
-	}
+	sizeStartStack := len(cargo[startStack])
+	cargo[endStack] = append(cargo[endStack], cargo[startStack][sizeStartStack-numCrates:sizeStartStack]...)
+	cargo[startStack] = cargo[startStack][:sizeStartStack-numCrates]
 	return cargo
 }
 
