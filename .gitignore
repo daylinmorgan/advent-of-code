@@ -1,0 +1,6 @@
+input*.txt
+!scripts/skeleton/tmpls/input.txt
+prompt.md
+prompt.txt
+
+_*
