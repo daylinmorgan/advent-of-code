@@ -29,9 +29,7 @@ prompt: check-aoc-cookie ## get prompt, requires $AOC_SESSION_COOKIE, optional: 
 	fi
 
 h help: ## Show this help
-	@ echo 'Usage: make <target>'
-	@ echo
-	@ echo 'Available targets:'
-	@ grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m - %s\n", $$1, $$2}'
+	@ printf '\033[35mUsage\033[0m: make <target>\n\nAvailable targets:\n'
+	@ grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-17s\033[0m - %s\n", $$1, $$2}'
 
 .PHONY: check-aoc-cookie skeleton input prompt h help
