@@ -28,6 +28,8 @@ prompt: check-aoc-cookie ## get prompt, requires $AOC_SESSION_COOKIE, optional: 
 		go run scripts/cmd/prompt/main.go -cookie $(AOC_SESSION_COOKIE); \
 	fi
 
+newday: skeleton input prompt ## generate a new "day"
+
 h help: ## Show this help
 	@ printf '\033[35mUsage\033[0m: make <target>\n\nAvailable targets:\n'
 	@ grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-17s\033[0m - %s\n", $$1, $$2}'
